@@ -5,5 +5,5 @@ dotfiles for my NixOS system. This was initially set up for Hyprland and KDE Pla
 At the root of this repo, run:
 ```bash
 stow -t ~/.config .config`
-`ln -sf ~/github/dotfiles/configuration.nix /etc/nixos/configuration.nix`
+ln -sf ~/github/dotfiles/configuration.nix /etc/nixos/configuration.nix
 ```
