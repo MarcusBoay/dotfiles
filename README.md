@@ -1,7 +1,7 @@
 # dotfiles
 dotfiles for my NixOS system. This was initially set up for Hyprland and KDE Plasma.
 
-![Hyprland](imgs/hyprland.png)
+![full](imgs/full.png)
 
 ## Setup
 At the root of this repo, run:
