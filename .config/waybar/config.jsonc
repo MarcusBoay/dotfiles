@@ -1,0 +1,189 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 2, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "custom/music",
+        "tray",
+        "keyboard-state",
+        "custom/notification",
+        "pulseaudio",
+        "custom/wlogout"
+    ],
+    // Modules configuration
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "HDMI-A-5": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "DP-5": [
+                6,
+                7,
+                8,
+                9,
+                10
+            ]
+        },
+        "disable-scroll": "true",
+        "format": "{icon}",
+        "format-icons": {
+            "1": " ",
+            "2": " ",
+            "3": "",
+            "4": "",
+            "5": "󰜀",
+            "6": "󰨞",
+            "7": " ",
+            "8": "󰋙",
+            "9": " ",
+            "10": " ",
+            "urgent": "",
+            "focused": "",
+            "default": "᳁"
+        },
+        "sort-by-name": false
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip-format": "<big><span color='#a6da95'>{:%Y-%m-%d}</span></big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#f0c6c6'><b>{}</b></span>",
+                "days": "<span color='#a5adcb'><b>{}</b></span>",
+                "weekdays": "<span color='#f5bde6'><b>{}</b></span>",
+                "today": "<span color='#a6da95'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "format-disconnected": "󰤯",
+        "format-ethernet": "󰈀",
+        "tooltip": true,
+        "tooltip-format": "", // An empty format will hide the tooltip
+        "tooltip-format-wifi": "<big>{essid}</big>\n<small>󰩟 {ipaddr}/{cidr}</small>\n<small>󱨂 {signalStrength}</small>",
+        "tooltip-format-ethernet": "<big>{ifname}</big>\n<small>󰩟 {ipaddr}/{cidr}</small>"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": [
+                " "
+            ]
+        },
+        "format-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 2%-",
+        "tooltip-format": "{volume}% - {desc}"
+        // "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/music": {
+        "escape": true,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "format": "󰝚  {}",
+        "interval": 5,
+        "max-length": 50,
+        "on-click": "playerctl play-pause",
+        "tooltip": "false"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            // "none": " ",
+            "notification": "<span foreground='#f0c6c6'><small><sup>⬤</sup></small></span>",
+            // "dnd-none": " "
+            "dnd-notification": "<span foreground='#f0c6c6'><small><sup>⬤</sup></small></span>"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/wlogout": {
+        "tooltip": false,
+        "format": " ",
+        "on-click": "python3 $HOME/.config/hypr/scripts/wlogout.py"
+    }
+}
