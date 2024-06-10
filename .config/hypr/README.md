@@ -1,0 +1,1 @@
+![hyprland](../../imgs/hyprland.png)
