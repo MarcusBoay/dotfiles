@@ -310,6 +310,7 @@
       wlogout
       xdg-desktop-portal-hyprland
       python3
+      dolphin
       # screenshot
       grim
       slurp
