@@ -132,7 +132,7 @@
         "tooltip-format-ethernet": "<big>{ifname}</big>\n<small>󰩟 {ipaddr}/{cidr}</small>"
     },
     "pulseaudio": {
-        "format": "{icon}",
+        "format": "{icon}  {volume}%",
         "format-icons": {
             "default": [
                 " "
