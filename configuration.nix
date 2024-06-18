@@ -2,13 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      ./nix-modules/android.nix
       ./nix-modules/gaming.nix
       ./nix-modules/qmk.nix
     ];
@@ -100,7 +99,14 @@
   hardware = {
     bluetooth.enable = true;
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+        version = "555.52.04";
+        sha256_64bit = "sha256-nVOubb7zKulXhux9AruUTVBQwccFFuYGWrU1ZiakRAI=";
+        sha256_aarch64 = lib.fakeSha256;
+        openSha256 = lib.fakeSha256;
+        settingsSha256 = "sha256-PMh5efbSEq7iqEMBr2+VGQYkBG73TGUh6FuDHZhmwHk="; 
+        persistencedSha256 = lib.fakeSha256;
+      };
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
     };
@@ -164,7 +170,7 @@
     variables = {
       EDITOR = "nvim";
       NIXOS_OZONE_WL = "1"; # support for hyprland and vscode, somehow...
-      BAT_THEME="Catppuccin Macchiato";
+      BAT_THEME = "Catppuccin Macchiato";
     };
     # List packages installed in system profile. To search, run:
     # $ nix search wget
