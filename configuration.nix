@@ -5,47 +5,30 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      ./nix-modules/gaming.nix
-      ./nix-modules/qmk.nix
-    ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./nix-modules/fixes.nix
+    ./nix-modules/hyprland.nix
+    ./nix-modules/gaming.nix
+    ./nix-modules/qmk.nix
+  ];
 
-  # Bootloader.
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    resumeDevice = "";
-    kernelParams = [
-      # See: https://github.com/NixOS/nixpkgs/issues/302059
-      "initcall_blacklist=simpledrm_platform_driver_init" # fix: NixOS 24.05 creates a new unknown monitor for some reason...
-    ];
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
-  # Swapfile.
   swapDevices = [{
     device = "/swapfile";
     size = 34 * 1024; # 32 GB + 2 GB
   }];
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
+    hostName = "nixos";
     networkmanager.enable = true;
   };
 
-  # Set your time zone.
   time.timeZone = "America/Toronto";
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_CA.UTF-8";
     extraLocaleSettings = {
@@ -53,7 +36,6 @@
     };
   };
 
-  # Services
   services = {
     # Enables the KDE Plasma Desktop Enviroment.
     displayManager.sddm.enable = true;
@@ -62,7 +44,6 @@
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
-
       # Configure keymap in X11
       xkb = {
         layout = "us";
@@ -74,9 +55,6 @@
 
     # Enable CUPS to print documents.
     printing.enable = true;
-
-    blueman.enable = true;
-    gnome.gnome-keyring.enable = true;
   };
 
   # Enable sound with pipewire.
@@ -88,12 +66,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   hardware = {
@@ -108,7 +80,7 @@
         persistencedSha256 = lib.fakeSha256;
       };
       modesetting.enable = true;
-      forceFullCompositionPipeline = true;
+      forceFullCompositionPipeline = true; # fix screen tearing
     };
     opengl = {
       enable = true;
@@ -117,15 +89,12 @@
     };
 
     keyboard.qmk.enable = true;
+
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Enable flakes.
-  nix.settings.experimental-features = [ "nix-command flakes" ];
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -155,25 +124,18 @@
         plugins = [ "git" ];
       };
     };
-
     firefox.enable = true;
-
-    hyprland.enable = true;
-    #waybar.enable = true;
-    #nm-applet.enable = true;
   };
 
   environment = {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1"; # support for electron-based apps
     };
     variables = {
       EDITOR = "nvim";
-      NIXOS_OZONE_WL = "1"; # support for hyprland and vscode, somehow...
       BAT_THEME = "Catppuccin Macchiato";
     };
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
     systemPackages = with pkgs; [
       kitty
       git
@@ -194,29 +156,6 @@
       zsh-powerlevel10k
       zsh-syntax-highlighting
       zsh-autosuggestions
-
-      hyprland
-      # for hyprland session
-      hyprpaper
-      hyprlock
-      hypridle
-      wofi
-      swaynotificationcenter
-      waybar
-      qt6.qtwayland
-      libsForQt5.qt5.qtwayland
-      playerctl
-      blueman
-      networkmanagerapplet
-      libgnome-keyring
-      wlogout
-      xdg-desktop-portal-hyprland
-      python3
-      dolphin
-      # screenshot
-      grim
-      slurp
-      swappy
     ];
   };
 
@@ -229,25 +168,8 @@
     ];
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
+  nix.settings.experimental-features = [ "nix-command flakes" ];
+  nixpkgs.config.allowUnfree = true;
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
@@ -260,5 +182,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
