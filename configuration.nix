@@ -11,6 +11,7 @@
     ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
     ./nix-modules/qmk.nix
+    ./nix-modules/rust.nix
   ];
 
   boot.loader = {
