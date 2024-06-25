@@ -14,4 +14,7 @@
   ];
 
   programs.direnv.enable = true;
+  programs.zsh.shellAliases = {
+    cg = "cargo";
+  };
 }

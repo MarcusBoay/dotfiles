@@ -7,6 +7,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
     ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
@@ -98,33 +99,19 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    users.jenny = {
-      isNormalUser = true;
-      description = "jenny";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
-        kate
-        vscode
-      ];
-      useDefaultShell = true;
-    };
-    defaultUserShell = pkgs.zsh;
+  users.users.jenny = {
+    isNormalUser = true;
+    description = "jenny";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      kate
+      vscode
+    ];
+    useDefaultShell = true;
   };
 
   programs = {
     neovim.defaultEditor = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      ohMyZsh = {
-        enable = true;
-        plugins = [ "git" ];
-      };
-    };
     firefox.enable = true;
   };
 
@@ -151,12 +138,6 @@
       ripgrep
       tealdeer
       bottom
-
-      zsh
-      oh-my-zsh
-      zsh-powerlevel10k
-      zsh-syntax-highlighting
-      zsh-autosuggestions
     ];
   };
 
