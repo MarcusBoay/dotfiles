@@ -18,7 +18,7 @@
       hyprpaper
       hyprlock
       hypridle
-      wofi
+      rofi-wayland
       swaynotificationcenter
       waybar
       qt6.qtwayland
