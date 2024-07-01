@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   services = {
     blueman.enable = true;
@@ -36,5 +39,10 @@
       slurp
       swappy
     ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }
