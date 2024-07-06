@@ -25,6 +25,8 @@ button_margin = 8
 margin_left = str((monitor_width - 4*button_size - 8*button_margin)//2)
 margin_top = str((monitor_height - button_size - 2*button_margin)//2)
 
+print("margin_top=", margin_top,", margin_left=", margin_left)
+
 subprocess.run([
     "wlogout",
     "-b", "4",
