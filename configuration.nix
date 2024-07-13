@@ -132,12 +132,12 @@
 
       bat
       bottom
+      du-dust
       fd
       hyfetch
       killall
       ripgrep
       tealdeer
-      bottom
     ];
   };
 
