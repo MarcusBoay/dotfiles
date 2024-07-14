@@ -82,7 +82,6 @@
         persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
       };
       modesetting.enable = true;
-      forceFullCompositionPipeline = true; # fix screen tearing
     };
     opengl = {
       enable = true;
