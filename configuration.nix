@@ -13,6 +13,7 @@
     ./nix-modules/gaming.nix
     ./nix-modules/qmk.nix
     ./nix-modules/rust.nix
+    ./nix-modules/vm.nix
   ];
 
   boot.loader = {
