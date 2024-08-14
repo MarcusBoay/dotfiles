@@ -11,6 +11,7 @@
     ./nix-modules/fixes.nix
     ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
+    ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
     ./nix-modules/rust.nix
     ./nix-modules/vm.nix
@@ -58,6 +59,9 @@
 
     # Enable CUPS to print documents.
     printing.enable = true;
+
+    # Enable library for remapping mouse inputs.
+    ratbagd.enable = true;
   };
 
   # Enable sound with pipewire.
@@ -138,6 +142,8 @@
       killall
       ripgrep
       tealdeer
+
+      piper
     ];
   };
 
