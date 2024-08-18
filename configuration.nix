@@ -111,6 +111,7 @@
     packages = with pkgs; [
       kate
       vscode
+      libreoffice
     ];
     useDefaultShell = true;
   };
