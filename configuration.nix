@@ -55,7 +55,10 @@
         variant = "";
       };
 
-      videoDrivers = ["nvidia"];
+      videoDrivers = [
+        "nvidia"
+        # "modesetting"
+      ];
     };
 
     # Enable CUPS to print documents.
@@ -93,6 +96,9 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      # extraPackages = with pkgs; [
+      #   vpl-gpu-rt
+      # ];
     };
 
     keyboard.qmk.enable = true;
