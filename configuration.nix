@@ -116,7 +116,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kate
-      vscode
+      vscode-fhs
       libreoffice
       krita
     ];
@@ -161,7 +161,10 @@
     enableDefaultPackages = true;
     fontconfig.defaultFonts.monospace = [ "MesloLGM Nerd Font" "Braille" ];
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
+      (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
+      meslo-lg
+      fira-code
+      cascadia-code
     ];
   };
 

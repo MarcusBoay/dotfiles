@@ -5,6 +5,8 @@
     discord
     steam
     protonup
+
+    prismlauncher
   ];
 
   programs = {

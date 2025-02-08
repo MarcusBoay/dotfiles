@@ -48,7 +48,7 @@
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
-      runAsRoot = true;
+      runAsRoot = false;
       swtpm.enable = true;
       ovmf = {
         enable = true;
@@ -61,16 +61,17 @@
       };
     };
   };
-  # virtualisation.kvmgt.enable = true;
-  # virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.kvmgt.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
 
   users.users.jenny.extraGroups = [
     "libvirtd"
-    # "kvm"
+    "kvm"
   ];
 
   environment.systemPackages = with pkgs; [
     qemu
+    virtiofsd
   ];
 }
