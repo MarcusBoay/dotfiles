@@ -5,6 +5,7 @@
     discord
     steam
     protonup
+    # mangohud
 
     prismlauncher
   ];

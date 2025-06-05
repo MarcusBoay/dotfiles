@@ -11,10 +11,10 @@
     ./nix-modules/fixes.nix
     # ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
-    ./nix-modules/game-dev.nix
+    # ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
-    ./nix-modules/rust.nix
-    ./nix-modules/vm.nix
+    # ./nix-modules/rust.nix
+    # ./nix-modules/vm.nix
   ];
 
   boot.loader = {
@@ -57,7 +57,6 @@
 
       videoDrivers = [
         "nvidia"
-        # "modesetting"
       ];
     };
 
@@ -96,9 +95,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      # extraPackages = with pkgs; [
-      #   vpl-gpu-rt
-      # ];
     };
 
     keyboard.qmk.enable = true;
@@ -115,8 +111,8 @@
     description = "jenny";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kate
-      vscode-fhs
+      kdePackages.kate
+      vscode
       libreoffice
       krita
     ];
@@ -131,7 +127,6 @@
   environment = {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1"; # support for electron-based apps
     };
     variables = {
       EDITOR = "nvim";
@@ -161,10 +156,12 @@
     enableDefaultPackages = true;
     fontconfig.defaultFonts.monospace = [ "MesloLGM Nerd Font" "Braille" ];
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
-      meslo-lg
-      fira-code
-      cascadia-code
+      # nerd-fonts repo: https://github.com/NixOS/nixpkgs/blob/nixpkgs-25.05-darwin/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
+      nerd-fonts.meslo-lg
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.caskaydia-mono
     ];
   };
 
