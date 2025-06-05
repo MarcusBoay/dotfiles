@@ -153,7 +153,9 @@
 
   fonts = {
     fontDir.enable = true;
+    enableDefaultFonts = true;
     enableDefaultPackages = true;
+    fontconfig.antialias = true;
     fontconfig.defaultFonts.monospace = [ "MesloLGM Nerd Font" "Braille" ];
     packages = with pkgs; [
       # nerd-fonts repo: https://github.com/NixOS/nixpkgs/blob/nixpkgs-25.05-darwin/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
@@ -162,6 +164,7 @@
       nerd-fonts.fira-mono
       nerd-fonts.caskaydia-cove
       nerd-fonts.caskaydia-mono
+      noto-fonts-cjk-sans # support japanese characters
     ];
   };
 
