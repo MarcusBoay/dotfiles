@@ -9,11 +9,11 @@
     /etc/nixos/hardware-configuration.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
-    # ./nix-modules/hyprland.nix
+    ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
-    # ./nix-modules/game-dev.nix
+    ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
-    # ./nix-modules/rust.nix
+    ./nix-modules/rust.nix
     # ./nix-modules/vm.nix
   ];
 
@@ -44,6 +44,7 @@
   services = {
     # Enables the KDE Plasma Desktop Enviroment.
     displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
     desktopManager.plasma6.enable = true;
 
     xserver = {
@@ -58,6 +59,18 @@
       videoDrivers = [
         "nvidia"
       ];
+
+      # displayManager.lightdm = {
+      #   enable = true;
+      #   greeters.gtk = {
+      #     enable = true;
+      #     cursorTheme = {
+      #       # package = pkgs.catppuccin-cursors.mochaSapphire;
+      #       # name = "catppuccin-mocha-sapphire-cursors";
+      #       size = 48;
+      #     };
+      #   };
+      # };
     };
 
     # Enable CUPS to print documents.
@@ -70,8 +83,17 @@
     hardware.openrgb.enable = true;
   };
 
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.greeters.gtk.cursorTheme = {
+  #   name = "Adwaita";
+  #   package = pkgs.gnome.adwaita-icon-theme;
+  # };
+
+  # To control monitor backlights.
+  hardware.i2c.enable = true;
+
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -103,18 +125,24 @@
       enable = true;
       enableGraphical = true;
     };
+
+    opentabletdriver.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jenny = {
     isNormalUser = true;
     description = "jenny";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       kdePackages.kate
       vscode
       libreoffice
       krita
+      gimp
+      inkscape
+      qutebrowser
+      yazi
     ];
     useDefaultShell = true;
   };
@@ -122,6 +150,8 @@
   programs = {
     neovim.defaultEditor = true;
     firefox.enable = true;
+    yazi.enable = true;
+    light.enable = true;
   };
 
   environment = {
@@ -133,10 +163,32 @@
       BAT_THEME = "Catppuccin Macchiato";
     };
     systemPackages = with pkgs; [
+      # KDE
+      kdePackages.kcalc # Calculator
+      kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
+      kdePackages.kclock # Clock app
+      kdePackages.kcolorchooser # A small utility to select a color
+      kdePackages.kolourpaint # Easy-to-use paint program
+      kdePackages.ksystemlog # KDE SystemLog Application
+      kdePackages.sddm-kcm # Configuration module for SDDM
+      kdiff3 # Compares and merges 2 or 3 files or directories
+      kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
+      kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
+      # Non-KDE graphical packages
+      hardinfo2 # System information and benchmarks for Linux systems
+      vlc # Cross-platform media player and streaming server
+      wayland-utils # Wayland utilities
+      wl-clipboard # Command-line copy/paste utilities for Wayland
+
+      xdg-desktop-portal-gtk
+      catppuccin-cursors.lattePink
+      bibata-cursors
+
       kitty
       git
       neovim
       stow
+      ddcutil
 
       bat
       bottom
@@ -146,6 +198,7 @@
       killall
       ripgrep
       tealdeer
+      jq
 
       piper
     ];
@@ -153,10 +206,15 @@
 
   fonts = {
     fontDir.enable = true;
-    enableDefaultFonts = true;
     enableDefaultPackages = true;
-    fontconfig.antialias = true;
-    fontconfig.defaultFonts.monospace = [ "MesloLGM Nerd Font" "Braille" ];
+    fontconfig = {
+        antialias = true;
+        useEmbeddedBitmaps = true;
+        defaultFonts = {
+            monospace = [ "MesloLGM Nerd Font" "Braille" ];
+            emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
+        };
+    };
     packages = with pkgs; [
       # nerd-fonts repo: https://github.com/NixOS/nixpkgs/blob/nixpkgs-25.05-darwin/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
       nerd-fonts.meslo-lg
@@ -165,6 +223,10 @@
       nerd-fonts.caskaydia-cove
       nerd-fonts.caskaydia-mono
       noto-fonts-cjk-sans # support japanese characters
+      noto-fonts
+      noto-fonts-emoji
+      noto-fonts-color-emoji
+      twemoji-color-font
     ];
   };
 

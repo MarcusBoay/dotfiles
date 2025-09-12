@@ -33,7 +33,6 @@
       wlogout
       xdg-desktop-portal-hyprland
       python3
-      dolphin
       # screenshot
       grim
       slurp
@@ -44,5 +43,10 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  xdg.mime.defaultApplications = {
+    "image/png" = "gwenview.desktop";
+    "image/jpg" = "gwenview.desktop";
   };
 }

@@ -1,0 +1,6 @@
+@import "catppuccin-default"
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+}

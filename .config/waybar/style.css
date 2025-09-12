@@ -14,10 +14,12 @@ window#waybar {
     animation: fadeInAnimation ease 500ms;
     animation-iteration-count: 1;
 }
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -122,6 +124,8 @@ button:hover {
 #custom-notification,
 #tray,
 #custom-music,
+#custom-brightness,
+#custom-ddc_brightness,
 #custom-wlogout,
 #mpd {
     color: @text;
@@ -207,11 +211,11 @@ label:focus {
     background-color: #ffa000;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
@@ -249,11 +253,11 @@ label:focus {
     min-width: 16px;
 }
 
-#keyboard-state > label {
+#keyboard-state>label {
     padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -262,7 +266,7 @@ label:focus {
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 tooltip {

@@ -38,7 +38,4 @@ set autoread
 set scrolloff=1
 
 " uses the system clipboard
-set clipboard^=unnamed,unnamedplus
-
-" make fonts darker
-set background=light
+set clipboard=unnamed,unnamedplus
