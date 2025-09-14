@@ -182,7 +182,6 @@
 
       xdg-desktop-portal-gtk
       catppuccin-cursors.lattePink
-      bibata-cursors
 
       kitty
       git
@@ -209,7 +208,7 @@
     enableDefaultPackages = true;
     fontconfig = {
         antialias = true;
-        useEmbeddedBitmaps = true;
+        useEmbeddedBitmaps = true; # support emojis on firefox
         defaultFonts = {
             monospace = [ "MesloLGM Nerd Font" "Braille" ];
             emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
