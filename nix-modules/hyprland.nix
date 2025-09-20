@@ -7,7 +7,6 @@
   };
 
   services = {
-    blueman.enable = true;
     gnome.gnome-keyring.enable = true;
   };
 
@@ -42,11 +41,7 @@
 
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
-  xdg.mime.defaultApplications = {
-    "image/png" = "gwenview.desktop";
-    "image/jpg" = "gwenview.desktop";
   };
 }
