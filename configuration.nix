@@ -9,12 +9,13 @@
     /etc/nixos/hardware-configuration.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
-    ./nix-modules/hyprland.nix
+    # ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
     ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
     ./nix-modules/rust.nix
     # ./nix-modules/vm.nix
+    ./nix-modules/ai.nix
   ];
 
   boot.loader = {
@@ -194,6 +195,7 @@
       du-dust
       fd
       hyfetch
+      fastfetch
       killall
       ripgrep
       tealdeer
@@ -210,7 +212,7 @@
         antialias = true;
         useEmbeddedBitmaps = true; # support emojis on firefox
         defaultFonts = {
-            monospace = [ "MesloLGM Nerd Font" "Braille" ];
+            monospace = [ "CaskaydiaMono Nerd Font Mono" "MesloLGM Nerd Font" "Braille" ];
             emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
         };
     };
@@ -226,6 +228,7 @@
       noto-fonts-emoji
       noto-fonts-color-emoji
       twemoji-color-font
+      google-fonts
     ];
   };
 
