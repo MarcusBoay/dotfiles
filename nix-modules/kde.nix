@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs;
     [
+      kdePackages.kate
       kdePackages.kcalc # Calculator
       kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
       kdePackages.kclock # Clock app
@@ -29,4 +30,8 @@
       wayland-utils # Wayland utilities
       wl-clipboard # Command-line copy/paste utilities for Wayland
     ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+    elisa
+  ];
 }

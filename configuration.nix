@@ -7,6 +7,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    ./nix-modules/hardware.nix
     ./nix-modules/kde.nix
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
@@ -44,75 +45,18 @@
     };
   };
 
-  services = {
-    xserver.videoDrivers = [
-      "nvidia"
-    ];
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-
-    # Enable library for remapping mouse inputs.
-    ratbagd.enable = true;
-
-    # To control GPU RGB.
-    hardware.openrgb.enable = true;
-  };
-
-  # To control monitor backlights.
-  hardware.i2c.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  hardware = {
-    bluetooth.enable = true;
-    bluetooth.settings = {
-      General = {
-        Experimental = true;
-      };
-    };
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      open = false;
-      modesetting.enable = true;
-    };
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-
-    keyboard.qmk.enable = true;
-
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
-    };
-
-    opentabletdriver.enable = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jenny = {
     isNormalUser = true;
     description = "jenny";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
-      kdePackages.kate
       vscode
       libreoffice
       krita
       gimp
       inkscape
       qutebrowser
-      yazi
     ];
     useDefaultShell = true;
   };
@@ -133,6 +77,8 @@
       BAT_THEME = "Catppuccin Macchiato";
     };
     systemPackages = with pkgs; [
+      nh
+
       xdg-desktop-portal-gtk
       catppuccin-cursors.lattePink
 
