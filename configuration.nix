@@ -45,19 +45,9 @@
   };
 
   services = {
-    xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
-      # Configure keymap in X11
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-
-      videoDrivers = [
-        "nvidia"
-      ];
-    };
+    xserver.videoDrivers = [
+      "nvidia"
+    ];
 
     # Enable CUPS to print documents.
     printing.enable = true;
