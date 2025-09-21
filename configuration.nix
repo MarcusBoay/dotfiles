@@ -51,7 +51,7 @@
     description = "jenny";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
-      vscode
+      vscode.fhs
       libreoffice
       krita
       gimp
