@@ -21,7 +21,7 @@
     };
     shellAliases = {
       c = "clear";
-      update = "sudo nixos-rebuild switch";
+      switch = "sudo nixos-rebuild switch";
     };
   };
   users.defaultUserShell = pkgs.zsh;
