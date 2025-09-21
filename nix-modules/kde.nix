@@ -2,19 +2,17 @@
 
 {
   services = {
-    # Enable the X11 windowing system.
-    xserver.enable = true;
-
     # Enables the KDE Plasma Desktop Enviroment.
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-    # displayManager.sddm.settings.General.DisplayServer = "wayland";
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      settings.General.DisplayServer = "wayland";
+    };
     desktopManager.plasma6.enable = true;
   };
 
   environment.systemPackages = with pkgs;
     [
-      # KDE
       kdePackages.kcalc # Calculator
       kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
       kdePackages.kclock # Clock app
