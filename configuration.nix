@@ -7,6 +7,8 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    ./nix-modules/kde.nix
+    ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
     # ./nix-modules/hyprland.nix
@@ -43,11 +45,6 @@
   };
 
   services = {
-    # Enables the KDE Plasma Desktop Enviroment.
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-    desktopManager.plasma6.enable = true;
-
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
@@ -60,18 +57,6 @@
       videoDrivers = [
         "nvidia"
       ];
-
-      # displayManager.lightdm = {
-      #   enable = true;
-      #   greeters.gtk = {
-      #     enable = true;
-      #     cursorTheme = {
-      #       # package = pkgs.catppuccin-cursors.mochaSapphire;
-      #       # name = "catppuccin-mocha-sapphire-cursors";
-      #       size = 48;
-      #     };
-      #   };
-      # };
     };
 
     # Enable CUPS to print documents.
@@ -83,12 +68,6 @@
     # To control GPU RGB.
     hardware.openrgb.enable = true;
   };
-
-  # services.xserver.displayManager.lightdm.enable = true;
-  # services.xserver.displayManager.lightdm.greeters.gtk.cursorTheme = {
-  #   name = "Adwaita";
-  #   package = pkgs.gnome.adwaita-icon-theme;
-  # };
 
   # To control monitor backlights.
   hardware.i2c.enable = true;
@@ -164,23 +143,6 @@
       BAT_THEME = "Catppuccin Macchiato";
     };
     systemPackages = with pkgs; [
-      # KDE
-      kdePackages.kcalc # Calculator
-      kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
-      kdePackages.kclock # Clock app
-      kdePackages.kcolorchooser # A small utility to select a color
-      kdePackages.kolourpaint # Easy-to-use paint program
-      kdePackages.ksystemlog # KDE SystemLog Application
-      kdePackages.sddm-kcm # Configuration module for SDDM
-      kdiff3 # Compares and merges 2 or 3 files or directories
-      kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
-      kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
-      # Non-KDE graphical packages
-      hardinfo2 # System information and benchmarks for Linux systems
-      vlc # Cross-platform media player and streaming server
-      wayland-utils # Wayland utilities
-      wl-clipboard # Command-line copy/paste utilities for Wayland
-
       xdg-desktop-portal-gtk
       catppuccin-cursors.lattePink
 
@@ -202,33 +164,6 @@
       jq
 
       piper
-    ];
-  };
-
-  fonts = {
-    fontDir.enable = true;
-    enableDefaultPackages = true;
-    fontconfig = {
-        antialias = true;
-        useEmbeddedBitmaps = true; # support emojis on firefox
-        defaultFonts = {
-            monospace = [ "CaskaydiaMono Nerd Font Mono" "MesloLGM Nerd Font" "Braille" ];
-            emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
-        };
-    };
-    packages = with pkgs; [
-      # nerd-fonts repo: https://github.com/NixOS/nixpkgs/blob/nixpkgs-25.05-darwin/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
-      nerd-fonts.meslo-lg
-      nerd-fonts.fira-code
-      nerd-fonts.fira-mono
-      nerd-fonts.caskaydia-cove
-      nerd-fonts.caskaydia-mono
-      noto-fonts-cjk-sans # support japanese characters
-      noto-fonts
-      noto-fonts-emoji
-      noto-fonts-color-emoji
-      twemoji-color-font
-      google-fonts
     ];
   };
 
