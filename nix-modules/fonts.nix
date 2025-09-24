@@ -5,12 +5,12 @@
     fontDir.enable = true;
     enableDefaultPackages = true;
     fontconfig = {
-        antialias = true;
-        useEmbeddedBitmaps = true; # support emojis on firefox
-        defaultFonts = {
-            monospace = [ "CaskaydiaMono Nerd Font Mono" "MesloLGM Nerd Font" "Braille" ];
-            emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
-        };
+      antialias = true;
+      useEmbeddedBitmaps = true; # support emojis on firefox
+      defaultFonts = {
+        monospace = [ "CaskaydiaMono Nerd Font Mono" "MesloLGM Nerd Font" "Braille" ];
+        emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
+      };
     };
     packages = with pkgs; [
       # nerd-fonts repo: https://github.com/NixOS/nixpkgs/blob/nixpkgs-25.05-darwin/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
