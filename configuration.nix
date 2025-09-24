@@ -37,6 +37,8 @@
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
+    # Better than iptables. https://wiki.nftables.org/wiki-nftables/index.php/What_is_nftables%3F
+    # Note: might be problematic sometimes (docker).
     nftables.enable = true;
   };
 
@@ -52,7 +54,13 @@
   users.users.jenny = {
     isNormalUser = true;
     description = "jenny";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [
+      "networkmanager"
+      # Allow root usage.
+      "wheel"
+      # For programs.light.enable.
+      "video"
+    ];
     packages = with pkgs; [
       vscode
       libreoffice
@@ -83,7 +91,6 @@
       nh
 
       xdg-desktop-portal-gtk
-      catppuccin-cursors.lattePink
 
       kitty
       git
@@ -100,7 +107,6 @@
       killall
       ripgrep
       tealdeer
-      jq
     ];
   };
 
