@@ -12,11 +12,13 @@
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
+
     # ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
     ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
-    ./nix-modules/rust.nix
+    # ./nix-modules/rust.nix
+    # ./nix-modules/cpp.nix
     # ./nix-modules/vm.nix
     ./nix-modules/ai.nix
   ];
@@ -35,6 +37,7 @@
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
+    nftables.enable = true;
   };
 
   time.timeZone = "America/Toronto";
@@ -51,7 +54,7 @@
     description = "jenny";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
-      vscode.fhs
+      vscode
       libreoffice
       krita
       gimp
@@ -98,8 +101,6 @@
       ripgrep
       tealdeer
       jq
-
-      piper
     ];
   };
 

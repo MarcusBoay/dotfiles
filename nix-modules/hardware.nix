@@ -7,14 +7,18 @@
     ];
 
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing.enable = false;
 
     # Enable library for remapping mouse inputs.
-    ratbagd.enable = true;
+    ratbagd.enable = false;
 
     # To control GPU RGB.
-    hardware.openrgb.enable = true;
+    hardware.openrgb.enable = false;
   };
+  environment.systemPackages = with pkgs; [
+    # Mouse input remapping software.
+    # piper
+  ];
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -31,11 +35,7 @@
     i2c.enable = true;
 
     bluetooth.enable = true;
-    bluetooth.settings = {
-      General = {
-        Experimental = true;
-      };
-    };
+    bluetooth.settings.General.Experimental = true;
 
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -54,6 +54,6 @@
       enableGraphical = true;
     };
 
-    opentabletdriver.enable = true;
+    opentabletdriver.enable = false;
   };
 }
