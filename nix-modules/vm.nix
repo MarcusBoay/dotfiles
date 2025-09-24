@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # VGA:   01:00.0    10de:1b80
@@ -19,10 +24,6 @@
   #   "intel_iommu=on"
   #   "vfio-pci.ids=10de:1b80,10de:10f0"
   # ];
-
-
-
-
 
   # boot.extraModprobeConfig = "options vfio-pci ids=10de:1b80,10de:10f0";
   # boot.initrd.kernelModules = [

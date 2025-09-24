@@ -2,7 +2,7 @@
 
 {
   users.users.jenny = {
-    extraGroups = ["adbusers"];
+    extraGroups = [ "adbusers" ];
     packages = with pkgs; [
       nodePackages_latest.nodejs
       jdk17
@@ -13,8 +13,8 @@
   programs.adb.enable = true;
 
   environment.variables = {
-    ANDROID_HOME="$HOME/Android/Sdk";
-    PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools";
+    ANDROID_HOME = "$HOME/Android/Sdk";
+    PATH = "$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools";
   };
 
   services.udev.extraRules = ''

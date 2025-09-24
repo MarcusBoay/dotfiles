@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -21,6 +26,8 @@
     # ./nix-modules/cpp.nix
     # ./nix-modules/vm.nix
     ./nix-modules/ai.nix
+    ./nix-modules/docker.nix
+    ./nix-modules/nix-dev.nix
   ];
 
   boot.loader = {
@@ -29,10 +36,12 @@
     timeout = 1;
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 34 * 1024; # 32 GB + 2 GB
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 34 * 1024; # 32 GB + 2 GB
+    }
+  ];
 
   networking = {
     hostName = "nixos";

@@ -8,8 +8,15 @@
       antialias = true;
       useEmbeddedBitmaps = true; # support emojis on firefox
       defaultFonts = {
-        monospace = [ "CaskaydiaMono Nerd Font Mono" "MesloLGM Nerd Font" "Braille" ];
-        emoji = [ "Noto Color Emoji" "Twemoji Color Emoji" ];
+        monospace = [
+          "CaskaydiaMono Nerd Font Mono"
+          "MesloLGM Nerd Font"
+          "Braille"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+          "Twemoji Color Emoji"
+        ];
       };
     };
     packages = with pkgs; [
