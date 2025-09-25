@@ -22,6 +22,8 @@
     shellAliases = {
       c = "clear";
       switch = "sudo nixos-rebuild switch";
+      l = "eza -lah";
+      ll = "eza -l";
     };
   };
   users.defaultUserShell = pkgs.zsh;

@@ -110,6 +110,7 @@
       bat
       bottom
       du-dust
+      eza
       fd
       hyfetch
       fastfetch
