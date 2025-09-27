@@ -30,10 +30,30 @@
     ./nix-modules/nix-dev.nix
   ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 1;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key.
+    # It will just not appear on screen unless a key is pressed.
+    loader.timeout = 0;
+
+    # Enable "silent boot".
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "video=efi:2560x1440"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+
+    # Graphical boot animation.
+    plymouth.enable = true;
+    plymouth.theme = "breeze";
   };
 
   swapDevices = [
