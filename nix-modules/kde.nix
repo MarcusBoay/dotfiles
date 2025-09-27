@@ -15,7 +15,7 @@
     kdePackages.kate
     kdePackages.kcalc # Calculator
     #kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
-    #kdePackages.kclock # Clock app
+    kdePackages.kclock # Clock app
     #kdePackages.kcolorchooser # A small utility to select a color
     #kdePackages.kolourpaint # Easy-to-use paint program
     kdePackages.ksystemlog # KDE SystemLog Application

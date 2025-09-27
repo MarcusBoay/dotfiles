@@ -5,8 +5,6 @@
     zsh
     oh-my-zsh
     zsh-powerlevel10k
-    zsh-syntax-highlighting
-    zsh-autosuggestions
   ];
 
   programs.zsh = {
