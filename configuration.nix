@@ -45,7 +45,6 @@
     kernelParams = [
       "quiet"
       "splash"
-      "video=efi:2560x1440"
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
