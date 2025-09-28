@@ -12,6 +12,7 @@ sudo ln -sf ~/github/dotfiles/configuration.nix /etc/nixos/configuration.nix
 ```
 
 ## TODO
+- [ ] sddm: custom sddm theme
 - [ ] wlogout: `loginctl terminate-user $USER` crashes hyprland...
 - [ ] hyprland: don't point `polkit-kde-authentication-agent-1` nix store
 - [ ] hyprland: put colors into separate config file
