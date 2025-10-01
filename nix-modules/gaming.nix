@@ -3,8 +3,9 @@
 {
   users.users.jenny.packages = with pkgs; [
     discord
-    steam
+    # proton-ge-bin
     protonup
+    protonup-qt
     # mangohud
 
     prismlauncher

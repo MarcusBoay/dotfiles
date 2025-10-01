@@ -18,7 +18,7 @@
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
 
-    # ./nix-modules/hyprland.nix
+    ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
     ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
