@@ -136,6 +136,8 @@
       killall
       ripgrep
       tealdeer
+
+      unstable.proton-authenticator
     ];
   };
 
@@ -148,7 +150,14 @@
       options = "--delete-older-than 30d";
     };
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import <unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
