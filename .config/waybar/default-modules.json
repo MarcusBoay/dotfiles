@@ -6,9 +6,7 @@
                 2,
                 3,
                 4,
-                5
-            ],
-            "DP-5": [
+                5,
                 6,
                 7,
                 8,
@@ -183,6 +181,29 @@
             "󱩖"
         ],
         "exec": "source ~/.config/hypr/scripts/waybar-ddc-module.sh",
+        "return-type": "json",
+        "tooltip": false
+    },
+    "custom/hyprsunset": {
+        "format": "{icon}  {percentage}%",
+        "format-icons": [
+            "󰛩",
+            "󱩎",
+            "󱩏",
+            "󱩐",
+            "󱩑",
+            "󱩒",
+            "󱩓",
+            "󱩔",
+            "󱩕",
+            "󱩖"
+        ],
+        "exec": "source ~/.config/hypr/scripts/waybar-hyprsunset.sh",
+        "interval": "once",
+        "on-scroll-up": "source ~/.config/hypr/scripts/waybar-hyprsunset.sh +",
+        "on-scroll-down": "source ~/.config/hypr/scripts/waybar-hyprsunset.sh -",
+        "on-click": "source ~/.config/hypr/scripts/waybar-hyprsunset.sh -",
+        "on-click-right": "source ~/.config/hypr/scripts/waybar-hyprsunset.sh +",
         "return-type": "json",
         "tooltip": false
     }

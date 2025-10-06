@@ -2,13 +2,14 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FuzzyBubbles, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(91, 96, 120, 0.85);
     color: @mauve;
+    font-weight: bold;
     transition-property: background-color;
     transition-duration: 0.25s;
     animation: fadeInAnimation ease 500ms;
@@ -53,10 +54,11 @@ button:hover {
 }
 
 #workspaces {
-    background: @base;
-    border: 2px solid;
-    border-color: @surface0;
-    border-radius: 16px;
+    /* background-color: rgba(110, 115, 141, 0.85); */
+    /* border: 2px solid; */
+    /* border-color: @overlay2; */
+    /* border-radius: 4px; */
+    color: @crust;
     padding: 0 4px;
     opacity: 0.85;
 }
@@ -66,7 +68,7 @@ button:hover {
     background: transparent;
     transition: background 0.2s;
     transition-timing-function: ease-in-out;
-    border-radius: 16px;
+    border-radius: 4px;
 }
 
 #workspaces button.active {
@@ -78,7 +80,7 @@ button:hover {
 
 #workspaces button label {
     font-size: 11px;
-    color: @surface1;
+    color: @mantle;
     transition: color 0.2s;
 }
 
@@ -126,23 +128,23 @@ button:hover {
 #custom-music,
 #custom-brightness,
 #custom-ddc_brightness,
+#custom-hyprsunset,
 #custom-wlogout,
 #mpd {
-    color: @text;
-    background: @base;
-    border: 2px solid;
-    border-color: @surface0;
-    border-radius: 15px;
+    color: @mantle;
+    /* background: @base; */
+    /* border: 2px solid; */
+    /* border-color: @surface0; */
+    /* border-radius: 4px; */
+    font-weight: bold;
     padding: 0 6px;
-    margin: 4px 0 0 0;
+    margin: 0;
     opacity: 0.85;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-right: 4px;
     opacity: 0.85;
 }
 
@@ -180,7 +182,7 @@ label:focus {
 #custom-wlogout {
     /* background-color: #f1c40f; */
     /* color: @rosewater; */
-    margin-right: 4px;
+    /* margin-right: 4px; */
 }
 
 #pulseaudio.muted {
@@ -270,10 +272,10 @@ label:focus {
 }
 
 tooltip {
-    background: @base;
-    border: 2px solid;
+    background: rgba(91, 96, 120, 0.85);
+    /* border: 2px solid;
     border-color: @surface0;
-    border-radius: 16px;
+    border-radius: 4px; */
     padding: 0 4px;
     animation: fadeInAnimation ease 150ms;
     animation-iteration-count: 1;

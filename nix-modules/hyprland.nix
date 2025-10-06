@@ -33,7 +33,6 @@
       networkmanagerapplet
       libgnome-keyring
       wlogout
-      xdg-desktop-portal-hyprland
       python3
       # screenshot
       grim

@@ -18,14 +18,14 @@
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
 
-    ./nix-modules/hyprland.nix
+    # ./nix-modules/hyprland.nix
     ./nix-modules/gaming.nix
     ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
     # ./nix-modules/rust.nix
     # ./nix-modules/cpp.nix
     # ./nix-modules/vm.nix
-    ./nix-modules/ai.nix
+    # ./nix-modules/ai.nix
     ./nix-modules/docker.nix
     ./nix-modules/nix-dev.nix
   ];
@@ -139,6 +139,7 @@
     ];
   };
 
+  programs.nix-ld.enable = true;
   nix = {
     settings.experimental-features = [ "nix-command flakes" ];
     gc = {
