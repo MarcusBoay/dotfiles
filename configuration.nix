@@ -17,9 +17,10 @@
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
+    ./nix-modules/curfew.nix
 
     # ./nix-modules/hyprland.nix
-    ./nix-modules/gaming.nix
+    # ./nix-modules/gaming.nix
     ./nix-modules/game-dev.nix
     ./nix-modules/qmk.nix
     # ./nix-modules/rust.nix
@@ -136,8 +137,6 @@
       killall
       ripgrep
       tealdeer
-
-      unstable.proton-authenticator
     ];
   };
 
