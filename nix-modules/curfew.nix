@@ -15,16 +15,18 @@ let
       IFS=":"
       arr=($1)
       unset IFS
-      echo $((''${arr [ 0 ]}*60 + ''${arr [ 1 ]}))
+      echo $((''${arr[0]}*60 + ''${arr[1]}))
     }
 
-    nowM=$(toMinutes "$now")
-    startM=$(toMinutes "$start")
-    endM=$(toMinutes "$end")
+    nowM=$(toMinutes "''${now}")
+    startM=$(toMinutes "''${start}")
+    endM=$(toMinutes "''${end}")
 
-    if (( nowM < startM || nowM >= endM )); then
-      logger -t curfew "Detected computer online outside of ''${start}-''${end}... powering off."
+    if (( ''${nowM} < ''${startM} || ''${nowM} >= ''${endM} )); then
+      echo "Detected computer online outside of allowed period of ''${start} - ''${end}... powering off!!!"
       systemctl poweroff
+    else
+      echo "Current time (''${now}) is within allowed period of ''${start} - ''${end}... "
     fi
   '';
 in
@@ -39,7 +41,7 @@ in
   # One‑shot service that simply runs the script once.
   # -----------------------------------------------------------------
   systemd.services.curfew = {
-    description = "Shut down the machine if it's online outside 20:00-22:30";
+    description = "Shut down machine if within curfew period";
     # We don’t actually need to start it at boot, but declaring a
     # WantedBy makes the unit visible to `systemctl status`.
     wantedBy = [ "multi-user.target" ];
