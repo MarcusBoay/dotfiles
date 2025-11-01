@@ -24,7 +24,8 @@ let
 
     if (( ''${nowM} < ''${startM} || ''${nowM} >= ''${endM} )); then
       echo "Detected computer online outside of allowed period of ''${start} - ''${end}... powering off!!!"
-      systemctl poweroff
+      #systemctl poweroff
+      loginctl terminate-user jenny
     else
       echo "Current time (''${now}) is within allowed period of ''${start} - ''${end}... "
     fi

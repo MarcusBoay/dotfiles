@@ -17,7 +17,7 @@
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
     ./nix-modules/fixes.nix
-    ./nix-modules/curfew.nix
+    # ./nix-modules/curfew.nix
 
     # ./nix-modules/hyprland.nix
     # ./nix-modules/gaming.nix
@@ -29,16 +29,24 @@
     # ./nix-modules/ai.nix
     ./nix-modules/docker.nix
     ./nix-modules/nix-dev.nix
+    # ./nix-modules/winboat.nix
   ];
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
 
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key.
-    # It will just not appear on screen unless a key is pressed.
-    loader.timeout = 0;
+      grub = {
+        efiSupport = true;
+        device = "nodev";
+      };
+
+      # Hide the OS choice for bootloaders.
+      # It's still possible to open the bootloader list by pressing any key.
+      # It will just not appear on screen unless a key is pressed.
+      timeout = 0;
+    };
 
     # Enable "silent boot".
     consoleLogLevel = 3;
@@ -140,13 +148,13 @@
     ];
   };
 
-  programs.nix-ld.enable = true;
   nix = {
     settings.experimental-features = [ "nix-command flakes" ];
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
+      randomizedDelaySec = "10min";
     };
   };
   nixpkgs.config = {
