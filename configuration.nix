@@ -16,20 +16,12 @@
     ./nix-modules/kde.nix
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
-    ./nix-modules/fixes.nix
     # ./nix-modules/curfew.nix
 
-    # ./nix-modules/hyprland.nix
-    # ./nix-modules/gaming.nix
-    ./nix-modules/game-dev.nix
-    ./nix-modules/qmk.nix
-    # ./nix-modules/rust.nix
-    # ./nix-modules/cpp.nix
-    # ./nix-modules/vm.nix
-    # ./nix-modules/ai.nix
-    ./nix-modules/docker.nix
+    ./nix-modules/niri.nix
     ./nix-modules/nix-dev.nix
-    # ./nix-modules/winboat.nix
+    # ./nix-modules/qmk.nix
+    ./nix-modules/gaming.nix
   ];
 
   boot = {
@@ -115,6 +107,7 @@
     yazi.enable = true;
     light.enable = true;
   };
+  services.flatpak.enable = true;
 
   environment = {
     sessionVariables = {
@@ -132,6 +125,7 @@
       kitty
       git
       neovim
+      tmux
       stow
       ddcutil
 

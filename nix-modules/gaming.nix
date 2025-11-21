@@ -2,7 +2,6 @@
 
 {
   users.users.jenny.packages = with pkgs; [
-    discord
     # proton-ge-bin
     protonup
     protonup-qt
