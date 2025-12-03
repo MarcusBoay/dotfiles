@@ -28,7 +28,6 @@
       nerd-fonts.caskaydia-mono
       noto-fonts-cjk-sans # support japanese characters
       noto-fonts
-      noto-fonts-emoji
       noto-fonts-color-emoji
       twemoji-color-font
       google-fonts

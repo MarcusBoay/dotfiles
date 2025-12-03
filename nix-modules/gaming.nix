@@ -3,7 +3,7 @@
 {
   users.users.jenny.packages = with pkgs; [
     # proton-ge-bin
-    protonup
+    protonup-ng
     protonup-qt
     # mangohud
 

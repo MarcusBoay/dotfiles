@@ -101,8 +101,20 @@
     useDefaultShell = true;
   };
 
+  users.users.maddie = {
+    isNormalUser = true;
+    description = "maddie";
+    extraGroups = [
+      "networkmanager"
+      "video"
+    ];
+    packages = with pkgs; [
+      qutebrowser
+    ];
+    useDefaultShell = true;
+  };
+
   programs = {
-    neovim.defaultEditor = true;
     firefox.enable = true;
     yazi.enable = true;
     light.enable = true;
@@ -124,14 +136,13 @@
 
       kitty
       git
-      neovim
       tmux
       stow
       ddcutil
 
       bat
       bottom
-      du-dust
+      dust
       eza
       fd
       hyfetch
@@ -139,7 +150,30 @@
       killall
       ripgrep
       tealdeer
+
+      # additional lazyvim stuff
+      lazygit
+      fzf
+      python3
+      gcc
+      wget
+      unzip
+      vimPlugins.nvim-treesitter
+      vimPlugins.nvim-treesitter.withAllGrammars
+      luarocks
+      ast-grep
+      lua51Packages.lua
+      ghostscript
+      tectonic
+      mermaid-cli
+      cargo
     ];
+  };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   nix = {

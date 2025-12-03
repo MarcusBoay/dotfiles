@@ -77,6 +77,8 @@ compinit
 #   git push --set-upstream origin $(git_current_branch)
 # }
 
+export PATH="${PATH}:${HOME}/.cargo/bin";
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
