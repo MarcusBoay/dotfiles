@@ -15,9 +15,11 @@
   # programs.waybar.enable = true; # top bar
   environment.systemPackages = with pkgs; [
     fuzzel
-    swaylock
     mako
+    sunsetr
+    swaybg
     swayidle
+    swaylock
     xwayland-satellite # xwayland support
   ];
 

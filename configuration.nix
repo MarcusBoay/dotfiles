@@ -20,6 +20,7 @@
 
     ./nix-modules/niri.nix
     ./nix-modules/nix-dev.nix
+    ./nix-modules/rust.nix
     # ./nix-modules/qmk.nix
     ./nix-modules/gaming.nix
   ];
@@ -96,19 +97,6 @@
       krita
       gimp
       inkscape
-      qutebrowser
-    ];
-    useDefaultShell = true;
-  };
-
-  users.users.maddie = {
-    isNormalUser = true;
-    description = "maddie";
-    extraGroups = [
-      "networkmanager"
-      "video"
-    ];
-    packages = with pkgs; [
       qutebrowser
     ];
     useDefaultShell = true;

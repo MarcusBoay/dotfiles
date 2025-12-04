@@ -273,6 +273,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 
+spawn-at-startup "sunsetr"
+spawn-sh-at-startup "swaybg -i ~/Pictures/nixos/nix-wallpaper-binary-black.png -m fill"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -621,24 +624,10 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
-overview {
-    backdrop-color "#000000"
-}
-
 gestures {
     hot-corners {
         off
     }
-    // // Increase the trigger area and maximum speed.
-    // dnd-edge-workspace-switch {
-    //     trigger-height 100
-    //     max-speed 3000
-    // }
-    // // Increase the trigger area and maximum speed.
-    // dnd-edge-view-scroll {
-    //     trigger-width 100
-    //     max-speed 3000
-    // }
 }
 
 cursor {
@@ -651,5 +640,10 @@ cursor {
 window-rule {
     match is-active=false
 
-    opacity 0.55
+    opacity 0.65
+    shadow {
+      on
+      draw-behind-window true
+      color "#000000"
+    }
 }
