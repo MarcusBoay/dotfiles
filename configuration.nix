@@ -23,6 +23,7 @@
     ./nix-modules/rust.nix
     # ./nix-modules/qmk.nix
     ./nix-modules/gaming.nix
+    ./nix-modules/docker.nix
   ];
 
   boot = {
@@ -114,7 +115,7 @@
       WLR_NO_HARDWARE_CURSORS = "1";
     };
     variables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
       BAT_THEME = "Catppuccin Macchiato";
     };
     systemPackages = with pkgs; [
@@ -127,6 +128,8 @@
       tmux
       stow
       ddcutil
+      helix
+      zed-editor-fhs
 
       bat
       bottom
@@ -139,29 +142,8 @@
       ripgrep
       tealdeer
 
-      # additional lazyvim stuff
-      lazygit
-      fzf
-      python3
-      gcc
-      wget
-      unzip
-      vimPlugins.nvim-treesitter
-      vimPlugins.nvim-treesitter.withAllGrammars
-      luarocks
-      ast-grep
-      lua51Packages.lua
-      ghostscript
-      tectonic
-      mermaid-cli
       cargo
     ];
-  };
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   nix = {

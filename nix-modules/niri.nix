@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     fuzzel
     mako
+    playerctl
     sunsetr
     swaybg
     swayidle
