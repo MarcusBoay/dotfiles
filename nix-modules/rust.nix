@@ -1,16 +1,16 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.jenny.packages = with pkgs; [
     cargo
-    rustc
     clippy
-    rustfmt
     rust-analyzer
+    rustc
+    rustfmt
 
-    pkg-config
-    openssl
     gcc
+    openssl
+    pkg-config
   ];
 
   programs.direnv.enable = true;

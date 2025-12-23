@@ -1,5 +1,6 @@
 theme = "catppuccin_macchiato"
 
+
 [editor]
 auto-pairs = false
 bufferline = "always"
@@ -10,9 +11,9 @@ trim-trailing-whitespace = true
 after-delay.enable = true
 
 [editor.cursor-shape]
-insert = "bar"
 normal = "block"
 select = "underline"
+insert = "bar"
 
 [editor.file-picker]
 hidden = false
@@ -26,3 +27,4 @@ tab = "all"
 [keys.normal]
 A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+X = "select_line_above"

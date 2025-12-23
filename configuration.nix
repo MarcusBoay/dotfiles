@@ -143,8 +143,6 @@
 
       fastfetch
       hyfetch
-
-      cargo
     ];
   };
 
