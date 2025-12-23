@@ -123,12 +123,12 @@
 
       xdg-desktop-portal-gtk
 
-      kitty
-      git
-      tmux
-      stow
       ddcutil
+      git
       helix
+      kitty
+      stow
+      tmux
       zed-editor-fhs
 
       bat
@@ -136,11 +136,13 @@
       dust
       eza
       fd
-      hyfetch
-      fastfetch
+      jq
       killall
       ripgrep
       tealdeer
+
+      fastfetch
+      hyfetch
 
       cargo
     ];
