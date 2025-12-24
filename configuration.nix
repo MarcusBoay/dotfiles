@@ -93,12 +93,13 @@
       "video"
     ];
     packages = with pkgs; [
-      vscode
-      libreoffice
-      krita
       gimp
       inkscape
+      krita
+      libreoffice
+      obs-studio
       qutebrowser
+      vscode
     ];
     useDefaultShell = true;
   };
