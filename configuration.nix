@@ -22,7 +22,7 @@
     ./nix-modules/nix-dev.nix
     ./nix-modules/rust.nix
     # ./nix-modules/qmk.nix
-    ./nix-modules/gaming.nix
+    # ./nix-modules/gaming.nix
     ./nix-modules/docker.nix
   ];
 
@@ -57,6 +57,17 @@
     plymouth.enable = true;
     plymouth.theme = "breeze";
   };
+
+  # services.xserver.enable = true;
+  # services.xserver.xrandrHeads = [
+  #   {
+  #     output = "DP-3";
+  #     primary = true;
+  #     monitorConfig = ''
+  #       Option "VertRefresh" "180"
+  #     '';
+  #   }
+  # ];
 
   swapDevices = [
     {

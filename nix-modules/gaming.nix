@@ -7,7 +7,7 @@
     protonup-qt
     # mangohud
 
-    prismlauncher
+    # prismlauncher
   ];
 
   programs = {

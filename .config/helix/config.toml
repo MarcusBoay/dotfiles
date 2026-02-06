@@ -5,7 +5,7 @@ theme = "catppuccin_macchiato"
 auto-pairs = false
 bufferline = "always"
 line-number = "relative"
-# trim-final-newlines = true
+trim-final-newlines = true
 trim-trailing-whitespace = true
 
 # [editor.auto-save]
@@ -24,12 +24,29 @@ render = true
 
 [editor.whitespace.render]
 tab = "all"
+newline = "all"
 
 [keys.normal]
+"S-ret" = "add_newline_above"
+"ret" = "add_newline_below"
+
+"backspace" = "delete_selection"
+"del" = "delete_selection"
+
 A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+
+C-j = "save_selection"
+C-s = ":write-all"
+
 X = "select_line_above"
 
 [keys.insert]
 A-down = ["normal_mode", "extend_to_line_bounds", "delete_selection", "paste_after", "insert_mode"]
 A-up = ["normal_mode", "extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before", "insert_mode"]
+
+C-s = ["normal_mode", ":write-all"]
+
+[keys.select]
+C-j = "save_selection"
+C-s = ":write-all"
