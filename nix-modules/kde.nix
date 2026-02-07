@@ -7,7 +7,9 @@
       enable = true;
       wayland.enable = true;
       settings.General.DisplayServer = "wayland";
+      theme = "catppuccin-latte-pink";
     };
+    displayManager.defaultSession = "niri";
     desktopManager.plasma6.enable = true;
   };
 
@@ -28,6 +30,16 @@
     vlc # Cross-platform media player and streaming server
     wayland-utils # Wayland utilities
     wl-clipboard # Command-line copy/paste utilities for Wayland
+
+    (catppuccin-sddm.override
+    {
+      flavor = "latte";
+      accent = "pink";
+      font = "Fuzzy Bubbles";
+      fontSize = "12";
+      background = "${/home/jenny/Pictures/bg/wallhaven-kxl8q1.jpg}";
+      loginBackground = true;
+    })
   ];
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     konsole

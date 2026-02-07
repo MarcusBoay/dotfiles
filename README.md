@@ -1,5 +1,5 @@
 # dotfiles
-dotfiles for my NixOS system. This was initially set up for Hyprland and KDE Plasma.
+dotfiles for my NixOS system.
 
 ![full](imgs/full.png)
 
