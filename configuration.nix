@@ -125,6 +125,7 @@
   environment = {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
+      md = "/home/jenny/github/dotfiles";
     };
     variables = {
       EDITOR = "hx";
