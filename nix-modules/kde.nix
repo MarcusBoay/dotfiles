@@ -9,7 +9,6 @@
       settings.General.DisplayServer = "wayland";
       theme = "catppuccin-latte-pink";
     };
-    displayManager.defaultSession = "niri";
     desktopManager.plasma6.enable = true;
   };
 

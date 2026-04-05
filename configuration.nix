@@ -22,7 +22,7 @@
     ./nix-modules/nix-dev.nix
     ./nix-modules/rust.nix
     # ./nix-modules/qmk.nix
-    # ./nix-modules/gaming.nix
+    ./nix-modules/gaming.nix
     ./nix-modules/docker.nix
   ];
 
