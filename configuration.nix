@@ -18,12 +18,13 @@
     ./nix-modules/zsh.nix
     # ./nix-modules/curfew.nix
 
-    ./nix-modules/niri.nix
+    # ./nix-modules/niri.nix
     ./nix-modules/nix-dev.nix
     ./nix-modules/rust.nix
     # ./nix-modules/qmk.nix
     ./nix-modules/gaming.nix
     ./nix-modules/docker.nix
+    ./nix-modules/game-dev.nix
   ];
 
   boot = {
@@ -151,6 +152,7 @@
       fd
       jq
       killall
+      rip2
       ripgrep
       tealdeer
 

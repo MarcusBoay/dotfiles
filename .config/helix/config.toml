@@ -1,6 +1,5 @@
 theme = "catppuccin_macchiato"
 
-
 [editor]
 auto-pairs = false
 bufferline = "always"

@@ -36,7 +36,7 @@
       accent = "pink";
       font = "Fuzzy Bubbles";
       fontSize = "12";
-      background = "${/home/jenny/Pictures/bg/wallhaven-kxl8q1.jpg}";
+      background = "${/home/jenny/Pictures/bg/141864744_p4.jpg}";
       loginBackground = true;
     })
   ];
