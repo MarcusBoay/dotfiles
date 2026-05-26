@@ -25,6 +25,7 @@
     ./nix-modules/gaming.nix
     ./nix-modules/docker.nix
     ./nix-modules/game-dev.nix
+    ./nix-modules/hytale-modding.nix
   ];
 
   boot = {
