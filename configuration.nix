@@ -120,7 +120,6 @@
   programs = {
     firefox.enable = true;
     yazi.enable = true;
-    light.enable = true;
   };
   services.flatpak.enable = true;
 
