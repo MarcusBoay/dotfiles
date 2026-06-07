@@ -16,16 +16,9 @@
     ./nix-modules/kde.nix
     ./nix-modules/fonts.nix
     ./nix-modules/zsh.nix
-    # ./nix-modules/curfew.nix
 
-    # ./nix-modules/niri.nix
+    ./nix-modules/niri.nix
     ./nix-modules/nix-dev.nix
-    ./nix-modules/rust.nix
-    # ./nix-modules/qmk.nix
-    ./nix-modules/gaming.nix
-    ./nix-modules/docker.nix
-    ./nix-modules/game-dev.nix
-    ./nix-modules/hytale-modding.nix
   ];
 
   boot = {
@@ -59,17 +52,6 @@
     plymouth.enable = true;
     plymouth.theme = "breeze";
   };
-
-  # services.xserver.enable = true;
-  # services.xserver.xrandrHeads = [
-  #   {
-  #     output = "DP-3";
-  #     primary = true;
-  #     monitorConfig = ''
-  #       Option "VertRefresh" "180"
-  #     '';
-  #   }
-  # ];
 
   swapDevices = [
     {
@@ -112,7 +94,6 @@
       libreoffice
       obs-studio
       qutebrowser
-      vscode
     ];
     useDefaultShell = true;
   };
