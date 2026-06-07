@@ -25,7 +25,7 @@ input {
         numlock
 
         repeat-delay 200
-        repeat-rate 35
+        repeat-rate 50
     }
 
     // Next sections include libinput settings.
@@ -162,7 +162,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -170,13 +170,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#d284ffff"
+        // active-color "#d284ffff"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        // inactive-color "#505050"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -185,7 +185,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#EEAECA" to="#94BBE9" angle=90 in="oklch longer hue"
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -330,7 +330,11 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+
     open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    default-floating-position x=0 y=0 relative-to="bottom-right"
 }
 
 // Example: block out two password managers from screen capture.
@@ -673,6 +677,7 @@ cursor {
 
 window-rule {
     match is-active=false
+    exclude app-id=r#"firefox$"# title="^Picture-in-Picture$"
 
     background-effect {
         blur true
