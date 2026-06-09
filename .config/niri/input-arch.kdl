@@ -1,5 +1,9 @@
 input {
     keyboard {
+        xkb {
+            layout "us"
+            variant "colemak"
+        }
         numlock
 
         repeat-delay 200

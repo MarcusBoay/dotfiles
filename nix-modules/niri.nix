@@ -23,6 +23,7 @@
     systemPackages = with pkgs; [
       fuzzel
       mako
+      nautilus
       playerctl
       sunsetr
       swaybg
