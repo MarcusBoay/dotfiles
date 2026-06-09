@@ -19,7 +19,7 @@ window-rule {
 
 window-rule {
     match is-active=false
-    exclude app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    exclude app-id=r#"firefox$"#
 
     background-effect {
         blur true
