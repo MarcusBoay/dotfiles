@@ -1,6 +1,7 @@
 input {
     keyboard {
         xkb {
+            model "at-translated-set-2-keyboard"
             layout "us"
             variant "colemak"
         }
