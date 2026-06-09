@@ -22,7 +22,7 @@
       switch = "sudo nixos-rebuild switch";
       l = "eza -lah";
       ll = "eza -l";
-      rm = "echo 'Use '\rip\' instead!'";
+      rm = "echo 'Use \'rip\' instead!'";
     };
   };
   users.defaultUserShell = pkgs.zsh;
