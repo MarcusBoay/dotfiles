@@ -60,6 +60,7 @@
       size = 34 * 1024; # 32 GB + 2 GB
     }
   ];
+  services.udisks2.enable = true;
 
   networking = {
     hostName = "nixos";
@@ -85,8 +86,6 @@
       "networkmanager"
       # Allow root usage.
       "wheel"
-      # For programs.light.enable.
-      "video"
     ];
     packages = with pkgs; [
       gimp
