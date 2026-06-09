@@ -337,6 +337,15 @@ window-rule {
     default-floating-position x=0 y=0 relative-to="bottom-right"
 }
 
+window-rule {
+    match app-id=r#"kitty$"#
+    match is-active=true
+
+    opacity 0.85
+    background-effect {
+        blur true
+    }
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
