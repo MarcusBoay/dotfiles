@@ -1,0 +1,43 @@
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    default-floating-position x=0 y=0 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id=r#"kitty$"#
+    match is-active=true
+
+    opacity 0.85
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match is-active=false
+    exclude app-id=r#"firefox$"# title="^Picture-in-Picture$"
+
+    background-effect {
+        blur true
+    }
+    opacity 0.65
+    shadow {
+      off
+      draw-behind-window true
+      color "#000000"
+    }
+}
+
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}

@@ -1,0 +1,42 @@
+// Check the wiki for a full description of the configuration:
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+include "input-nixos.kdl"
+
+include "output-nixos.kdl"
+
+include "layout.kdl"
+
+include "spawn-at-startup.kdl"
+
+include "screenshot-path-nixos.kdl"
+
+animations {
+    slowdown 0.8
+}
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "Nordzy-cursors-white"
+    xcursor-size 32
+}
+
+include "window-rules.kdl"
+
+include "binds.kdl"
+include "binds-nixos.kdl"

@@ -6,7 +6,10 @@
 }:
 
 {
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    useNautilus = true;
+  };
 
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service

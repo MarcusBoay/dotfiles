@@ -93,7 +93,6 @@
       inkscape
       krita
       libreoffice
-      nautilus
       obs-studio
       kdePackages.okular
       qutebrowser

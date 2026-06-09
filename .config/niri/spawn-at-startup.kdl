@@ -1,0 +1,2 @@
+spawn-at-startup "sunsetr"
+spawn-sh-at-startup "swaybg -i ~/Pictures/nixos/Frame_2_1.png -m fill"
