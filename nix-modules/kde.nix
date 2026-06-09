@@ -27,8 +27,6 @@
     # Non-KDE graphical packages
     #hardinfo2 # System information and benchmarks for Linux systems
     vlc # Cross-platform media player and streaming server
-    wayland-utils # Wayland utilities
-    wl-clipboard # Command-line copy/paste utilities for Wayland
 
     (catppuccin-sddm.override
     {

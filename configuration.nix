@@ -12,13 +12,14 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./nix-modules/hardware.nix
-    ./nix-modules/kde.nix
     ./nix-modules/fonts.nix
+    ./nix-modules/hardware.nix
+    ./nix-modules/nix-dev.nix
     ./nix-modules/zsh.nix
 
+    ./nix-modules/maplestory-cursor.nix
     ./nix-modules/niri.nix
-    ./nix-modules/nix-dev.nix
+    ./nix-modules/gaming.nix
   ];
 
   boot = {
@@ -34,19 +35,19 @@
       # Hide the OS choice for bootloaders.
       # It's still possible to open the bootloader list by pressing any key.
       # It will just not appear on screen unless a key is pressed.
-      timeout = 0;
+      timeout = null;
     };
 
     # Enable "silent boot".
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
+    # consoleLogLevel = 3;
+    # initrd.verbose = false;
+    # kernelParams = [
+    #   "quiet"
+    #   "splash"
+    #   "boot.shell_on_fail"
+    #   "udev.log_priority=3"
+    #   "rd.systemd.show_status=auto"
+    # ];
 
     # Graphical boot animation.
     plymouth.enable = true;
@@ -92,8 +93,12 @@
       inkscape
       krita
       libreoffice
+      nautilus
       obs-studio
+      kdePackages.okular
       qutebrowser
+      wayland-utils # Wayland utilities
+      wl-clipboard # Command-line copy/paste utilities for Wayland
     ];
     useDefaultShell = true;
   };
@@ -139,6 +144,8 @@
 
       fastfetch
       hyfetch
+
+      nordzy-cursor-theme
     ];
   };
 

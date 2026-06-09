@@ -669,10 +669,8 @@ gestures {
 }
 
 cursor {
-    // xcursor-theme "MapleStorySVG"
-    // xcursor-size 48
-    xcursor-theme "breeze_cursors"
-    xcursor-size 24
+    xcursor-theme "Nordzy-cursors-white"
+    xcursor-size 32
 }
 
 window-rule {

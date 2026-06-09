@@ -21,6 +21,7 @@
     swaybg
     swayidle
     swaylock
+    xdg-desktop-portal-gnome
     xwayland-satellite # xwayland support
   ];
 
