@@ -13,7 +13,7 @@ include "output-nixos.kdl"
 
 include "layout.kdl"
 
-include "spawn-at-startup.kdl"
+include "spawn-at-startup-nixos.kdl"
 
 include "screenshot-path-nixos.kdl"
 

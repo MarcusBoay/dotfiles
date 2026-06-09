@@ -18,7 +18,7 @@
   # programs.waybar.enable = true; # top bar
   environment = {
     sessionVariables = {
-      NIRI_CONFIG = "~/.config/niri/config-nixos.kdl";
+      NIRI_CONFIG = "/home/jenny/.config/niri/config-nixos.kdl";
     };
     systemPackages = with pkgs; [
       fuzzel

@@ -13,7 +13,7 @@ include "output-arch.kdl"
 
 include "layout.kdl"
 
-include "spawn-at-startup.kdl"
+include "spawn-at-startup-arch.kdl"
 
 include "screenshot-path-arch.kdl"
 
