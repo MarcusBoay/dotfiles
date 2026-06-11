@@ -8,8 +8,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"kitty$"#
-    match is-active=true
+    match app-id="kitty" is-active=true
 
     opacity 0.85
     background-effect {
@@ -24,7 +23,7 @@ window-rule {
     background-effect {
         blur true
     }
-    opacity 0.65
+    opacity 0.75
     shadow {
       off
       draw-behind-window true
