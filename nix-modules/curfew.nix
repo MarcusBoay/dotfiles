@@ -6,29 +6,42 @@
 }:
 let
   curfew = pkgs.writeShellScriptBin "curfew" ''
-    #!/usr/bin/env bash
-
-    now=$(date +%H:%M)
-    start="20:00"
-    end="22:30"
     toMinutes() {
       IFS=":"
       arr=($1)
       unset IFS
       echo $((''${arr[0]}*60 + ''${arr[1]}))
     }
+    detectAndShutdown() {
+      start=($1)
+      end=($2)
+      startM=$(toMinutes "''${start}")
+      endM=$(toMinutes "''${end}")
+      if (( ''${nowM} < ''${startM} || ''${nowM} >= ''${endM} )); then
+        echo "Detected computer online outside of allowed period of ''${start} - ''${end}... powering off!!!"
+        loginctl terminate-user jenny
+        exit
+      else
+        echo "Current time (''${now}) is within allowed period of ''${start} - ''${end}... "
+        exit
+      fi
+    }
 
+    # Allow extended hours during Friday and Saturday.
+    now=$(date +%H:%M)
+    day=$(date +%A)
     nowM=$(toMinutes "''${now}")
-    startM=$(toMinutes "''${start}")
-    endM=$(toMinutes "''${end}")
+    case ''${day} in
+      "Friday")
+        detectAndShutdown "18:00" "25:00"
+        exit ;;
+      "Saturday")
+        detectAndShutdown "00:00" "03:00" ;;
+        # don't exit, check for evening hours
+    esac
 
-    if (( ''${nowM} < ''${startM} || ''${nowM} >= ''${endM} )); then
-      echo "Detected computer online outside of allowed period of ''${start} - ''${end}... powering off!!!"
-      #systemctl poweroff
-      loginctl terminate-user jenny
-    else
-      echo "Current time (''${now}) is within allowed period of ''${start} - ''${end}... "
-    fi
+    # Regular hours for other days.
+    detectAndShutdown "20:00" "22:30"
   '';
 in
 {
