@@ -16,6 +16,7 @@
     ./nix-modules/hardware.nix
     ./nix-modules/nix-dev.nix
     ./nix-modules/zsh.nix
+    ./nix-modules/kmscon.nix
 
     ./nix-modules/maplestory-cursor.nix
     ./nix-modules/niri.nix
