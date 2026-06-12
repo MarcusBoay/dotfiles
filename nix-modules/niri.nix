@@ -21,7 +21,9 @@
       NIRI_CONFIG = "/home/jenny/.config/niri/config-nixos.kdl";
     };
     systemPackages = with pkgs; [
+      bc
       fuzzel
+      libnotify
       mako
       nautilus
       playerctl
